@@ -7,8 +7,9 @@ func _ready():
 	pass
 
 func _on_join_game_button_pressed():
-	print("Join game selected")
+	get_tree().change_scene_to_file("res://join_lobby.tscn")
 
 
 func _on_host_game_button_pressed():
-	print("Host game selected")
+	get_tree().change_scene_to_file("res://hosting_lobby.tscn")
+	#print("Host game selected")

@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgdclt2mrdqri"]
+
+[ext_resource type="Script" uid="uid://b03ijfqdfa5ns" path="res://join_lobby.gd" id="1_au8ga"]
+[ext_resource type="Texture2D" uid="uid://pg4gn0oxxij1" path="res://solid_blue.png" id="1_b6r6p"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_au8ga")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -325.0
+offset_right = 600.0
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_b6r6p")
+
+[node name="HostLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.0
+offset_top = 68.0
+offset_right = 92.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 31
+text = "Join a Lobby"
+
+[node name="LobbyCodeLabel" type="Label" parent="."]
+offset_left = 360.0
+offset_top = 574.0
+offset_right = 507.0
+offset_bottom = 609.0
+theme_override_font_sizes/font_size = 25
+text = "Lobby Code:"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 576.0
+offset_right = 736.0
+offset_bottom = 607.0
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 1040.0
+offset_top = 576.0
+offset_right = 1154.0
+offset_bottom = 607.0
+text = "Back to Menu"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

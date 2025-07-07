@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0qh1oihkbn2d"]
+[gd_scene load_steps=3 format=3 uid="uid://b0qh1oihkbn2d"]
 
 [ext_resource type="Texture2D" uid="uid://pg4gn0oxxij1" path="res://solid_blue.png" id="1_b8qpx"]
+[ext_resource type="Script" uid="uid://cp244mq2mbom3" path="res://hosting_lobby.gd" id="1_dxggo"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dxggo")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -24,3 +26,49 @@ offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_b8qpx")
+
+[node name="LobbyLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 24.0
+offset_right = 582.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 31
+text = "Lobby:"
+
+[node name="Players" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 93.0
+offset_right = 152.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 25
+text = "Players"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1024.0
+offset_top = 576.0
+offset_right = 1138.0
+offset_bottom = 607.0
+text = "Back to Menu"
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 262.0
+offset_top = 576.0
+offset_right = 376.0
+offset_bottom = 607.0
+text = "Start Game!"
+
+[node name="ReadyLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 576.0
+offset_right = 200.0
+offset_bottom = 608.0
+theme_override_font_sizes/font_size = 18
+text = "Players Ready: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
