@@ -15,10 +15,22 @@ var zoom_step = 0.1
 func _ready():
 	var size = get_viewport().get_visible_rect().size
 	world_size = size
-	print("Viewport size is: ", size)
-
 
 func _input(event):
+	if Input.is_action_just_pressed("settings_hotkey"):
+		print("escape called")
+		var hasControlNode = get_node_or_null("SettingsControl")
+		if hasControlNode == null:
+			zoom_camera(-10)
+			add_child(settings_menu)
+			settings_menu.position = Vector2(world_size.x/2, world_size.y/2)
+		else:
+			if settings_menu.get_node_or_null(	"QuitConfirmationControl"):
+				settings_menu.remove_quit_confirmation()
+			else:
+				remove_child(settings_menu)
+		
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if Input.is_action_pressed("left_click") and event.pressed:
 			dragging = true
@@ -34,9 +46,11 @@ func _input(event):
 
 	# Zoom input
 	if Input.is_action_just_pressed("mouse_wheel_up"):
-		zoom_camera(zoom_step)
+		if get_node_or_null("SettingsControl") == null:
+			zoom_camera(zoom_step)
 	elif Input.is_action_just_pressed("mouse_wheel_down"):
-		zoom_camera(-zoom_step)
+		if get_node_or_null("SettingsControl") == null:
+			zoom_camera(-zoom_step)
 
 func zoom_camera(amount: float):
 	var new_zoom = camera.zoom + Vector2.ONE * amount

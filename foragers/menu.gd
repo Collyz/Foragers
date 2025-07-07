@@ -16,11 +16,10 @@ func _input(event):
 		if hasControlNode == null:
 			add_child(settings_menu)
 		else:
-			if settings_menu.get_node_or_null(	"QuitConfirmationControl"):
+			if settings_menu.get_node_or_null("QuitConfirmationControl"):
 				settings_menu.remove_quit_confirmation()
 			else:
 				remove_child(settings_menu)
-	pass
 
 func _on_join_game_button_pressed():
 	get_tree().change_scene_to_file("res://join_lobby.tscn")
