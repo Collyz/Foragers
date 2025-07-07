@@ -1,5 +1,6 @@
 extends Control
 
+@onready var settings_menu = preload("res://settings_menu.tscn").instantiate()
 @onready var back_button = $BackButton
 
 func _ready():

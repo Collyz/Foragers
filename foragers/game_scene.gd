@@ -1,6 +1,8 @@
 extends Node2D
 
+@onready var settings_menu = preload("res://settings_menu.tscn").instantiate()
 @onready var camera = $Camera2D
+
 
 var dragging := false
 var last_mouse_position := Vector2.ZERO
