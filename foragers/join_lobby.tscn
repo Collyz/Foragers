@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgdclt2mrdqri"]
 
 [ext_resource type="Script" uid="uid://b03ijfqdfa5ns" path="res://join_lobby.gd" id="1_au8ga"]
-[ext_resource type="Texture2D" uid="uid://pg4gn0oxxij1" path="res://solid_blue.png" id="1_b6r6p"]
+[ext_resource type="Texture2D" uid="uid://g4aju6pdd8rn" path="res://solid_sage.png" id="2_au8ga"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,54 +12,79 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_au8ga")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -600.0
-offset_top = -325.0
-offset_right = 600.0
-offset_bottom = 323.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_b6r6p")
+texture = ExtResource("2_au8ga")
 
 [node name="HostLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -92.0
-offset_top = 68.0
-offset_right = 92.0
-offset_bottom = 112.0
+layout_mode = 2
+offset_left = 712.0
+offset_top = 72.0
+offset_right = 1160.0
+offset_bottom = 116.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 50
 text = "Join a Lobby"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LobbyCodeLabel" type="Label" parent="."]
-offset_left = 360.0
-offset_top = 574.0
-offset_right = 507.0
-offset_bottom = 609.0
+layout_mode = 2
+offset_left = 725.0
+offset_top = 674.0
+offset_right = 924.0
+offset_bottom = 746.0
 theme_override_font_sizes/font_size = 25
-text = "Lobby Code:"
+text = "Lobby Code"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="."]
-layout_mode = 0
-offset_left = 512.0
-offset_top = 576.0
-offset_right = 736.0
-offset_bottom = 607.0
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+offset_left = 928.0
+offset_top = 672.0
+offset_right = 1229.0
+offset_bottom = 748.0
+theme_override_font_sizes/font_size = 25
+placeholder_text = "ex: EP49"
+
+[node name="ErrorLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 772.0
+offset_top = 765.0
+offset_right = 1220.0
+offset_bottom = 788.0
+theme_override_font_sizes/font_size = 20
+text = "ERROR"
 
 [node name="BackButton" type="Button" parent="."]
-offset_left = 1040.0
-offset_top = 576.0
-offset_right = 1154.0
-offset_bottom = 607.0
+layout_mode = 2
+offset_left = 624.0
+offset_top = 856.0
+offset_right = 912.0
+offset_bottom = 936.0
+theme_override_font_sizes/font_size = 25
 text = "Back to Menu"
+
+[node name="JoinGameButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 960.0
+offset_top = 856.0
+offset_right = 1248.0
+offset_bottom = 935.0
+theme_override_font_sizes/font_size = 25
+text = "Join Game"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgw63hsybqj3u"]
+
+[ext_resource type="Texture2D" uid="uid://pg4gn0oxxij1" path="res://solid_blue.png" id="1_mlf6e"]
+[ext_resource type="Script" uid="uid://clrvk7x6lxtiw" path="res://game_scene.gd" id="1_v1wow"]
+[ext_resource type="Texture2D" uid="uid://bk44nnxqotsdn" path="res://icon.svg" id="2_po0ka"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_v1wow")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mlf6e")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="Icon6" type="Sprite2D" parent="."]
+position = Vector2(1149, 770)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(195, 278)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(385, 454)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(501, 148)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(903, 439)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon5" type="Sprite2D" parent="."]
+position = Vector2(974, 204)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon7" type="Sprite2D" parent="."]
+position = Vector2(399, 871)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon8" type="Sprite2D" parent="."]
+position = Vector2(1676, 888)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon9" type="Sprite2D" parent="."]
+position = Vector2(1503, 386)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon10" type="Sprite2D" parent="."]
+position = Vector2(1704, 178)
+texture = ExtResource("2_po0ka")

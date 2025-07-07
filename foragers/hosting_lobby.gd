@@ -8,3 +8,8 @@ func _ready():
 
 func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://menu.tscn")
+
+
+func _on_start_button_pressed():
+	print("Start button pressed")
+	get_tree().change_scene_to_file("res://game_scene.tscn")
