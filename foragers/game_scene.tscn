@@ -1,39 +1,168 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgw63hsybqj3u"]
+[gd_scene load_steps=3 format=3 uid="uid://dgw63hsybqj3u"]
 
-[ext_resource type="Texture2D" uid="uid://pg4gn0oxxij1" path="res://solid_blue.png" id="1_mlf6e"]
 [ext_resource type="Script" uid="uid://clrvk7x6lxtiw" path="res://game_scene.gd" id="1_v1wow"]
 [ext_resource type="Texture2D" uid="uid://bk44nnxqotsdn" path="res://icon.svg" id="2_po0ka"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_v1wow")
 
-[node name="Background" type="TextureRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("1_mlf6e")
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.88405, 0.120178, 0.345244, 1)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(960, 540)
+[node name="SubViewportContainerBoard" type="SubViewportContainer" parent="."]
+layout_mode = 1
+offset_right = 1408.0
+offset_bottom = 802.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainerBoard"]
+handle_input_locally = false
+size = Vector2i(1408, 802)
+render_target_update_mode = 4
+
+[node name="BG" type="CanvasLayer" parent="SubViewportContainerBoard/SubViewport"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainerBoard/SubViewport/BG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.276632, 0.452537, 0.923213, 1)
+
+[node name="Icon2" type="Sprite2D" parent="SubViewportContainerBoard/SubViewport"]
+position = Vector2(64, 64)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon8" type="Sprite2D" parent="SubViewportContainerBoard/SubViewport"]
+position = Vector2(64, 736)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon9" type="Sprite2D" parent="SubViewportContainerBoard/SubViewport"]
+position = Vector2(1344, 736)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon10" type="Sprite2D" parent="SubViewportContainerBoard/SubViewport"]
+position = Vector2(1344, 64)
+texture = ExtResource("2_po0ka")
+
+[node name="BoardCamera" type="Camera2D" parent="SubViewportContainerBoard/SubViewport"]
+position = Vector2(704, 401)
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="SubViewportContainerBottom" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -278.0
+offset_right = -512.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainerBottom"]
+handle_input_locally = false
+size = Vector2i(1408, 278)
+render_target_update_mode = 4
+
+[node name="BG" type="CanvasLayer" parent="SubViewportContainerBottom/SubViewport"]
+layer = -2
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainerBottom/SubViewport/BG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.960784, 0.960784, 0.862745, 1)
+
+[node name="Icon7" type="Sprite2D" parent="SubViewportContainerBottom/SubViewport"]
+position = Vector2(64, 62)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon8" type="Sprite2D" parent="SubViewportContainerBottom/SubViewport"]
+position = Vector2(1344, 62)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon9" type="Sprite2D" parent="SubViewportContainerBottom/SubViewport"]
+position = Vector2(64, 214)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon10" type="Sprite2D" parent="SubViewportContainerBottom/SubViewport"]
+position = Vector2(1344, 214)
+texture = ExtResource("2_po0ka")
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainerBottom/SubViewport"]
+position = Vector2(704, 142)
+
+[node name="SubViewportContainerSide" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -256.0
+offset_bottom = 256.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainerSide"]
+handle_input_locally = false
+size = Vector2i(512, 1080)
+render_target_update_mode = 4
+
+[node name="BG" type="CanvasLayer" parent="SubViewportContainerSide/SubViewport"]
+layer = -5
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainerSide/SubViewport/BG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.960784, 0.960784, 0.862745, 1)
+
+[node name="Icon7" type="Sprite2D" parent="SubViewportContainerSide/SubViewport"]
+position = Vector2(64, 64)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon5" type="Sprite2D" parent="SubViewportContainerSide/SubViewport"]
+position = Vector2(64, 1016)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon4" type="Sprite2D" parent="SubViewportContainerSide/SubViewport"]
+position = Vector2(448, 1016)
+texture = ExtResource("2_po0ka")
+
+[node name="Icon8" type="Sprite2D" parent="SubViewportContainerSide/SubViewport"]
+position = Vector2(448, 64)
+texture = ExtResource("2_po0ka")
+
+[node name="SideCamera" type="Camera2D" parent="SubViewportContainerSide/SubViewport"]
+position = Vector2(256, 540)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 rotation_smoothing_enabled = true
-
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(384, 216)
-texture = ExtResource("2_po0ka")
-
-[node name="Icon4" type="Sprite2D" parent="."]
-position = Vector2(1576, 856)
-texture = ExtResource("2_po0ka")
-
-[node name="Icon7" type="Sprite2D" parent="."]
-position = Vector2(1752, 160)
-texture = ExtResource("2_po0ka")
-
-[node name="Icon8" type="Sprite2D" parent="."]
-position = Vector2(408, 872)
-texture = ExtResource("2_po0ka")
-
-[node name="Icon9" type="Sprite2D" parent="."]
-position = Vector2(1072, 584)
-texture = ExtResource("2_po0ka")
+editor_draw_limits = true
+editor_draw_drag_margin = true

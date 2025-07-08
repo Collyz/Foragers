@@ -1,31 +1,31 @@
-extends Node2D
+extends Control
 
 @onready var settings_menu = preload("res://settings_menu.tscn").instantiate()
-@onready var camera = $Camera2D
+@onready var board_camera = $SubViewportContainerBoard/SubViewport/BoardCamera
 
 
 var dragging := false
 var last_mouse_position := Vector2.ZERO
 
-var world_size = Vector2(0, 0)  # Replace with your game world size
+var board_size = Vector2(0, 0)
+var screen_size = Vector2(0, 0)
 var min_zoom = 1
-var max_zoom = 1.8
+var max_zoom = 3
 var zoom_step = 0.1
 
 func _ready():
-	var size = get_viewport().get_visible_rect().size
-	world_size = size
+	screen_size = get_viewport().get_visible_rect().size
+	print(screen_size)
+	board_size = board_camera.get_viewport().get_visible_rect().size
 
 func _input(event):
 	if Input.is_action_just_pressed("settings_hotkey"):
-		print("escape called")
 		var hasControlNode = get_node_or_null("SettingsControl")
 		if hasControlNode == null:
-			zoom_camera(-10)
 			add_child(settings_menu)
-			settings_menu.position = Vector2(world_size.x/2, world_size.y/2)
+			settings_menu.position = Vector2(screen_size.x/2, screen_size.y/2)
 		else:
-			if settings_menu.get_node_or_null(	"QuitConfirmationControl"):
+			if settings_menu.get_node_or_null("QuitConfirmationControl"):
 				settings_menu.remove_quit_confirmation()
 			else:
 				remove_child(settings_menu)
@@ -40,7 +40,7 @@ func _input(event):
 
 	elif event is InputEventMouseMotion and dragging:
 		var delta = event.position - last_mouse_position
-		camera.position -= delta / camera.zoom
+		board_camera.position -= delta / board_camera.zoom
 		last_mouse_position = event.position
 		clamp_camera_to_world()
 
@@ -53,15 +53,15 @@ func _input(event):
 			zoom_camera(-zoom_step)
 
 func zoom_camera(amount: float):
-	var new_zoom = camera.zoom + Vector2.ONE * amount
+	var new_zoom = board_camera.zoom + Vector2.ONE * amount
 	new_zoom.x = clamp(new_zoom.x, min_zoom, max_zoom)
 	new_zoom.y = clamp(new_zoom.y, min_zoom, max_zoom)
-	camera.zoom = new_zoom
+	board_camera.zoom = new_zoom
 	clamp_camera_to_world()
 
 func clamp_camera_to_world():
-	var half_screen = get_viewport_rect().size * 0.5 / camera.zoom
+	var half_screen = board_camera.get_viewport_rect().size * 0.5 / board_camera.zoom
 	var min_pos = half_screen
-	var max_pos = world_size - half_screen
+	var max_pos = board_size - half_screen
 
-	camera.position = camera.position.clamp(min_pos, max_pos)
+	board_camera.position = board_camera.position.clamp(min_pos, max_pos)
