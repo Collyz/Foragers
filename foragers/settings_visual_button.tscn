@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnimkygvmidpk"]
+
+[ext_resource type="Texture2D" uid="uid://cwh4asj5a0xfv" path="res://settings_icon.png" id="1_ftaps"]
+[ext_resource type="Script" uid="uid://c53ue711vrbqu" path="res://settings_visual_button.gd" id="1_vrex2"]
+
+[node name="SettingsVisualButton" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vrex2")
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("1_ftaps")
+
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

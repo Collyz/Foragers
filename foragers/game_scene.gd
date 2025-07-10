@@ -15,22 +15,9 @@ var zoom_step = 0.1
 
 func _ready():
 	screen_size = get_viewport().get_visible_rect().size
-	print(screen_size)
 	board_size = board_camera.get_viewport().get_visible_rect().size
 
 func _input(event):
-	if Input.is_action_just_pressed("settings_hotkey"):
-		var hasControlNode = get_node_or_null("SettingsControl")
-		if hasControlNode == null:
-			add_child(settings_menu)
-			settings_menu.position = Vector2(screen_size.x/2, screen_size.y/2)
-		else:
-			if settings_menu.get_node_or_null("QuitConfirmationControl"):
-				settings_menu.remove_quit_confirmation()
-			else:
-				remove_child(settings_menu)
-		
-	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if Input.is_action_pressed("left_click") and event.pressed:
 			dragging = true

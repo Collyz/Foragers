@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgdclt2mrdqri"]
+[gd_scene load_steps=4 format=3 uid="uid://cgdclt2mrdqri"]
 
 [ext_resource type="Script" uid="uid://b03ijfqdfa5ns" path="res://join_lobby.gd" id="1_au8ga"]
 [ext_resource type="Texture2D" uid="uid://g4aju6pdd8rn" path="res://solid_sage.png" id="2_au8ga"]
+[ext_resource type="PackedScene" uid="uid://dnimkygvmidpk" path="res://settings_visual_button.tscn" id="3_pe8al"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -86,5 +87,11 @@ offset_right = 1248.0
 offset_bottom = 935.0
 theme_override_font_sizes/font_size = 25
 text = "Join Game"
+
+[node name="SettingsVisualButton" parent="." instance=ExtResource("3_pe8al")]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 64.0
+offset_bottom = 64.0
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
