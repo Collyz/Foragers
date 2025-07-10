@@ -39,10 +39,10 @@ text = "Lobby:"
 
 [node name="Players" type="Label" parent="."]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 224.0
-offset_right = 248.0
-offset_bottom = 259.0
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 152.0
+offset_bottom = 227.0
 theme_override_font_sizes/font_size = 25
 text = "Players"
 
@@ -74,6 +74,24 @@ theme_override_font_sizes/font_size = 25
 text = "Players Ready: "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MapsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 192.0
+offset_right = 456.0
+offset_bottom = 227.0
+theme_override_font_sizes/font_size = 25
+text = "Maps:"
+
+[node name="SelectedMapLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1344.0
+offset_top = 192.0
+offset_right = 1499.0
+offset_bottom = 227.0
+theme_override_font_sizes/font_size = 25
+text = "SelectedMap"
 
 [node name="SettingsVisualButton" parent="." instance=ExtResource("3_fwojp")]
 offset_left = 64.0
