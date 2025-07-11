@@ -2,7 +2,7 @@ extends Control
 
 @onready var settings_menu = preload("res://settings_menu.tscn").instantiate()
 @onready var board_camera = $SubViewportContainerBoard/SubViewport/BoardCamera
-
+@onready var game_viewport = $SubViewportContainerBoard/SubViewport
 
 var dragging := false
 var last_mouse_position := Vector2.ZERO
@@ -16,6 +16,9 @@ var zoom_step = 0.1
 func _ready():
 	screen_size = get_viewport().get_visible_rect().size
 	board_size = board_camera.get_viewport().get_visible_rect().size
+	board_camera.position_smoothing_enabled = false;
+	board_camera.position = Vector2(game_viewport.size.x/2, game_viewport.size.y/2)
+	board_camera.position_smoothing_enabled = true;
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:

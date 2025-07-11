@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgw63hsybqj3u"]
+[gd_scene load_steps=5 format=3 uid="uid://dgw63hsybqj3u"]
 
 [ext_resource type="Script" uid="uid://clrvk7x6lxtiw" path="res://game_scene.gd" id="1_v1wow"]
 [ext_resource type="Texture2D" uid="uid://bk44nnxqotsdn" path="res://icon.svg" id="2_po0ka"]
 [ext_resource type="PackedScene" uid="uid://dnimkygvmidpk" path="res://settings_visual_button.tscn" id="3_v1wow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1wow"]
+size = Vector2(128, 128)
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -104,6 +107,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.276632, 0.452537, 0.923213, 1)
 
+[node name="BoardCamera" type="Camera2D" parent="SubViewportContainerBoard/SubViewport"]
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
 [node name="Icon2" type="Sprite2D" parent="SubViewportContainerBoard/SubViewport"]
 position = Vector2(64, 64)
 texture = ExtResource("2_po0ka")
@@ -120,13 +129,18 @@ texture = ExtResource("2_po0ka")
 position = Vector2(1344, 64)
 texture = ExtResource("2_po0ka")
 
-[node name="BoardCamera" type="Camera2D" parent="SubViewportContainerBoard/SubViewport"]
-position = Vector2(704, 401)
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
-editor_draw_limits = true
-editor_draw_drag_margin = true
+[node name="Icon3" type="Sprite2D" parent="SubViewportContainerBoard/SubViewport"]
+position = Vector2(600, 416)
+texture = ExtResource("2_po0ka")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SubViewportContainerBoard/SubViewport/Icon3"]
+position = Vector2(-600, -416)
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainerBoard/SubViewport/Icon3/StaticBody2D"]
+position = Vector2(600, 416)
+shape = SubResource("RectangleShape2D_v1wow")
+debug_color = Color(0.837943, 0.00120539, 0.927794, 0.42)
 
 [node name="SettingsVisualButton" parent="." instance=ExtResource("3_v1wow")]
 offset_left = 64.0
