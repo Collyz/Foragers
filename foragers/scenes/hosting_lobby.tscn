@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0qh1oihkbn2d"]
+[gd_scene load_steps=5 format=3 uid="uid://b0qh1oihkbn2d"]
 
-[ext_resource type="Script" uid="uid://cp244mq2mbom3" path="res://hosting_lobby.gd" id="1_dxggo"]
-[ext_resource type="Texture2D" uid="uid://g4aju6pdd8rn" path="res://solid_sage.png" id="2_dxggo"]
-[ext_resource type="PackedScene" uid="uid://dnimkygvmidpk" path="res://settings_visual_button.tscn" id="3_fwojp"]
+[ext_resource type="Script" uid="uid://cp244mq2mbom3" path="res://scripts/hosting_lobby.gd" id="1_j5rr8"]
+[ext_resource type="Texture2D" uid="uid://g4aju6pdd8rn" path="res://assets/colors/solid_sage.png" id="2_m1nxy"]
+[ext_resource type="PackedScene" uid="uid://dnimkygvmidpk" path="res://setting_interface_scenes/settings_visual_button.tscn" id="3_ya550"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwojp"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_dxggo")
+script = ExtResource("1_j5rr8")
 
 [node name="Background2" type="TextureRect" parent="."]
 layout_mode = 1
@@ -26,16 +28,27 @@ offset_right = 960.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_dxggo")
+texture = ExtResource("2_m1nxy")
 
 [node name="LobbyLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 848.0
-offset_top = 80.0
-offset_right = 1009.0
-offset_bottom = 149.0
+offset_left = 728.0
+offset_top = 72.0
+offset_right = 889.0
+offset_bottom = 141.0
 theme_override_font_sizes/font_size = 50
 text = "Lobby:"
+
+[node name="LobbyCodeButton" type="Button" parent="LobbyLabel"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = -4.0
+offset_right = 379.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fwojp")
+text = "Copy Me ⧉"
+flat = true
 
 [node name="Players" type="Label" parent="."]
 layout_mode = 0
@@ -93,11 +106,12 @@ offset_bottom = 227.0
 theme_override_font_sizes/font_size = 25
 text = "SelectedMap"
 
-[node name="SettingsVisualButton" parent="." instance=ExtResource("3_fwojp")]
+[node name="SettingsVisualButton" parent="." instance=ExtResource("3_ya550")]
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 64.0
 offset_bottom = 64.0
 
+[connection signal="pressed" from="LobbyLabel/LobbyCodeButton" to="." method="_on_lobby_code_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

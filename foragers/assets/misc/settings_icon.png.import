@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pg4gn0oxxij1"
-path="res://.godot/imported/solid_blue.png-879788b3a1b405b950c82f2d69ea9455.ctex"
+uid="uid://cqh8kkjcxbyg7"
+path="res://.godot/imported/settings_icon.png-42037498fa65f84bd042be1f7a0435ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://solid_blue.png"
-dest_files=["res://.godot/imported/solid_blue.png-879788b3a1b405b950c82f2d69ea9455.ctex"]
+source_file="res://assets/misc/settings_icon.png"
+dest_files=["res://.godot/imported/settings_icon.png-42037498fa65f84bd042be1f7a0435ae.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

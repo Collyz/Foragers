@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgw63hsybqj3u"]
 
-[ext_resource type="Script" uid="uid://clrvk7x6lxtiw" path="res://game_scene.gd" id="1_v1wow"]
-[ext_resource type="Texture2D" uid="uid://bk44nnxqotsdn" path="res://icon.svg" id="2_po0ka"]
-[ext_resource type="PackedScene" uid="uid://dnimkygvmidpk" path="res://settings_visual_button.tscn" id="3_v1wow"]
+[ext_resource type="Script" uid="uid://clrvk7x6lxtiw" path="res://scripts/game_scene.gd" id="1_ycayy"]
+[ext_resource type="Texture2D" uid="uid://bk44nnxqotsdn" path="res://assets/misc/icon.svg" id="2_bw6k5"]
+[ext_resource type="PackedScene" uid="uid://dnimkygvmidpk" path="res://setting_interface_scenes/settings_visual_button.tscn" id="3_y3j0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1wow"]
 size = Vector2(128, 128)
@@ -14,7 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_v1wow")
+script = ExtResource("1_ycayy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -56,27 +56,27 @@ color = Color(0.960784, 0.960784, 0.862745, 1)
 
 [node name="Icon7" type="Sprite2D" parent="SubViewportContainerSides/SubViewport"]
 position = Vector2(1856, 1016)
-texture = ExtResource("2_po0ka")
+texture = ExtResource("2_bw6k5")
 
 [node name="Icon9" type="Sprite2D" parent="SubViewportContainerSides/SubViewport"]
 position = Vector2(1472, 64)
-texture = ExtResource("2_po0ka")
+texture = ExtResource("2_bw6k5")
 
 [node name="Icon5" type="Sprite2D" parent="SubViewportContainerSides/SubViewport"]
 position = Vector2(64, 1016)
-texture = ExtResource("2_po0ka")
+texture = ExtResource("2_bw6k5")
 
 [node name="Icon4" type="Sprite2D" parent="SubViewportContainerSides/SubViewport"]
 position = Vector2(448, 1016)
-texture = ExtResource("2_po0ka")
+texture = ExtResource("2_bw6k5")
 
 [node name="Icon8" type="Sprite2D" parent="SubViewportContainerSides/SubViewport"]
 position = Vector2(1848, 64)
-texture = ExtResource("2_po0ka")
+texture = ExtResource("2_bw6k5")
 
 [node name="Icon10" type="Sprite2D" parent="SubViewportContainerSides/SubViewport"]
 position = Vector2(1472, 736)
-texture = ExtResource("2_po0ka")
+texture = ExtResource("2_bw6k5")
 
 [node name="SideCamera" type="Camera2D" parent="SubViewportContainerSides/SubViewport"]
 position = Vector2(960, 540)
@@ -115,23 +115,23 @@ editor_draw_drag_margin = true
 
 [node name="Icon2" type="Sprite2D" parent="SubViewportContainerBoard/SubViewport"]
 position = Vector2(64, 64)
-texture = ExtResource("2_po0ka")
+texture = ExtResource("2_bw6k5")
 
 [node name="Icon8" type="Sprite2D" parent="SubViewportContainerBoard/SubViewport"]
 position = Vector2(64, 824)
-texture = ExtResource("2_po0ka")
+texture = ExtResource("2_bw6k5")
 
 [node name="Icon9" type="Sprite2D" parent="SubViewportContainerBoard/SubViewport"]
 position = Vector2(1344, 824)
-texture = ExtResource("2_po0ka")
+texture = ExtResource("2_bw6k5")
 
 [node name="Icon10" type="Sprite2D" parent="SubViewportContainerBoard/SubViewport"]
 position = Vector2(1344, 64)
-texture = ExtResource("2_po0ka")
+texture = ExtResource("2_bw6k5")
 
 [node name="Icon3" type="Sprite2D" parent="SubViewportContainerBoard/SubViewport"]
 position = Vector2(600, 416)
-texture = ExtResource("2_po0ka")
+texture = ExtResource("2_bw6k5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="SubViewportContainerBoard/SubViewport/Icon3"]
 position = Vector2(-600, -416)
@@ -142,7 +142,7 @@ position = Vector2(600, 416)
 shape = SubResource("RectangleShape2D_v1wow")
 debug_color = Color(0.837943, 0.00120539, 0.927794, 0.42)
 
-[node name="SettingsVisualButton" parent="." instance=ExtResource("3_v1wow")]
+[node name="SettingsVisualButton" parent="." instance=ExtResource("3_y3j0m")]
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 64.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccf6afgdwmvyy"]
 
-[ext_resource type="Texture2D" uid="uid://dv7wg2qtohm66" path="res://setting_bg.png" id="1_8jmvo"]
-[ext_resource type="Script" uid="uid://c7jqd3m7lk4uf" path="res://quit_conf.gd" id="1_q2tkd"]
+[ext_resource type="Texture2D" uid="uid://dv7wg2qtohm66" path="res://assets/colors/setting_bg.png" id="1_8jmvo"]
+[ext_resource type="Script" uid="uid://c7jqd3m7lk4uf" path="res://scripts/quit_conf.gd" id="1_q2tkd"]
 
 [node name="QuitConfirmationControl" type="Control"]
 layout_mode = 3

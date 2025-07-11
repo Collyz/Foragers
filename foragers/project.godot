@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Foragers"
-run/main_scene="uid://blns2xj1e3qiw"
+run/main_scene="uid://qf8e5o45vuaj"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/misc/icon.svg"
 
 [display]
 

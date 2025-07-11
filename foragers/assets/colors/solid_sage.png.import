@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv7wg2qtohm66"
-path="res://.godot/imported/setting_bg.png-b00e7ca68ed5a2989b51adefb68ef132.ctex"
+uid="uid://g4aju6pdd8rn"
+path="res://.godot/imported/solid_sage.png-24b45e3b0aa767eddb30d6106ea2b28a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://setting_bg.png"
-dest_files=["res://.godot/imported/setting_bg.png-b00e7ca68ed5a2989b51adefb68ef132.ctex"]
+source_file="res://assets/colors/solid_sage.png"
+dest_files=["res://.godot/imported/solid_sage.png-24b45e3b0aa767eddb30d6106ea2b28a.ctex"]
 
 [params]
 

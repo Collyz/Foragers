@@ -1,6 +1,5 @@
 extends Control
 
-@onready var settings_menu = preload("res://settings_menu.tscn").instantiate()
 @onready var board_camera = $SubViewportContainerBoard/SubViewport/BoardCamera
 @onready var game_viewport = $SubViewportContainerBoard/SubViewport
 
