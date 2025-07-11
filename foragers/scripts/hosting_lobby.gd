@@ -1,10 +1,10 @@
 extends Control
 class_name HostingScreen
 
-@onready var back_btn = $BackButton
-@onready var lobby_code_btn = $LobbyLabel/LobbyCodeButton
+@onready var lobby_code_btn = $VBoxContainer/LobbyCodeHBox/LobbyCodeButton
 var parent: SceneControllerNode = null
 var lobby_code: String = ""
+
 func _ready():
 	parent = get_parent()
 

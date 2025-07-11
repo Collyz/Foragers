@@ -13,7 +13,6 @@ func _ready():
 	add_child(menu)
 	add_child(host_server)
 	randomize()
-	print(host_server.generate_lobby_code())
 
 func scene_to_menu():
 	if get_node_or_null("res://scenes/start_menu.tscn") == null:

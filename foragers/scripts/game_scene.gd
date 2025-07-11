@@ -1,56 +1,30 @@
 extends Control
 
-@onready var board_camera = $SubViewportContainerBoard/SubViewport/BoardCamera
+@onready var game_camera = $SubViewportContainerBoard/SubViewport/BoardCamera
 @onready var game_viewport = $SubViewportContainerBoard/SubViewport
+@onready var side_viewport = $SubViewportContainerSides/SubViewport
 
 var dragging := false
 var last_mouse_position := Vector2.ZERO
 
 var board_size = Vector2(0, 0)
 var screen_size = Vector2(0, 0)
-var min_zoom = 1
+var min_zoom = .8
 var max_zoom = 3
-var zoom_step = 0.1
+var zoom_step = 0.01
 
 func _ready():
 	screen_size = get_viewport().get_visible_rect().size
-	board_size = board_camera.get_viewport().get_visible_rect().size
-	board_camera.position_smoothing_enabled = false;
-	board_camera.position = Vector2(game_viewport.size.x/2, game_viewport.size.y/2)
-	board_camera.position_smoothing_enabled = true;
-
+	board_size = Vector2(2000, 1300)
+	
+	# Make viewport 7/8 of the screen height and 5/6 of the width
+	game_viewport.size = Vector2(screen_size.x/6 * 5, screen_size.y/8 * 7)
+	# Make sideviewport the same size as the screen since it's behind the board anyways
+	side_viewport.size = Vector2(screen_size.x, screen_size.y)
+	
+	game_camera.position_smoothing_enabled = false;
+	game_camera.position = Vector2(game_viewport.size.x/2, game_viewport.size.y/2)
+	game_camera.position_smoothing_enabled = true;
+	
 func _input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if Input.is_action_pressed("left_click") and event.pressed:
-			dragging = true
-			last_mouse_position = event.position
-		elif not event.pressed:
-			dragging = false
-
-	elif event is InputEventMouseMotion and dragging:
-		var delta = event.position - last_mouse_position
-		board_camera.position -= delta / board_camera.zoom
-		last_mouse_position = event.position
-		clamp_camera_to_world()
-
-	# Zoom input
-	if Input.is_action_just_pressed("mouse_wheel_up"):
-		if get_node_or_null("SettingsControl") == null:
-			zoom_camera(zoom_step)
-	elif Input.is_action_just_pressed("mouse_wheel_down"):
-		if get_node_or_null("SettingsControl") == null:
-			zoom_camera(-zoom_step)
-
-func zoom_camera(amount: float):
-	var new_zoom = board_camera.zoom + Vector2.ONE * amount
-	new_zoom.x = clamp(new_zoom.x, min_zoom, max_zoom)
-	new_zoom.y = clamp(new_zoom.y, min_zoom, max_zoom)
-	board_camera.zoom = new_zoom
-	clamp_camera_to_world()
-
-func clamp_camera_to_world():
-	var half_screen = board_camera.get_viewport_rect().size * 0.5 / board_camera.zoom
-	var min_pos = half_screen
-	var max_pos = board_size - half_screen
-
-	board_camera.position = board_camera.position.clamp(min_pos, max_pos)
+	pass
