@@ -1,4 +1,5 @@
 extends Control
+class_name ClientScreen
 
 @onready var back_button = $BackButton
 var parent: SceneControllerNode
@@ -6,7 +7,7 @@ var parent: SceneControllerNode
 func _ready():
 	parent = get_parent()
 	
-func _input(event):
+func _input(_event):
 	pass
 	
 func _on_back_button_pressed():

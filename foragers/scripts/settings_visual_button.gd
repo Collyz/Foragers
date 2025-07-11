@@ -5,7 +5,7 @@ var screen_size = Vector2(0, 0)
 func _ready():
 	screen_size = get_viewport().get_visible_rect().size
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("settings_hotkey"):
 		_on_settings_button_pressed()
 
