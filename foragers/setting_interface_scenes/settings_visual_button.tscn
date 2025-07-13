@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnimkygvmidpk"]
 
 [ext_resource type="Texture2D" uid="uid://cqh8kkjcxbyg7" path="res://assets/misc/settings_icon.png" id="1_ftaps"]
-[ext_resource type="Script" uid="uid://c53ue711vrbqu" path="res://scripts/settings_visual_button.gd" id="1_vrex2"]
+[ext_resource type="Script" uid="uid://c53ue711vrbqu" path="res://scripts/setting_scripts/settings_visual_button.gd" id="1_vrex2"]
 
 [node name="SettingsVisualButton" type="Control"]
 layout_mode = 3
