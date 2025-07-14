@@ -1,7 +1,6 @@
 extends Control
 class_name ClientScreen
 
-@onready var back_button = $BackButton
 var parent: SceneControllerNode
 
 func _ready():
