@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://qf8e5o45vuaj"]
 
-[ext_resource type="Script" uid="uid://bcnnowrx41jnq" path="res://scripts/multiplayer_scripts/scene_controller.gd" id="1_tgksc"]
+[ext_resource type="Script" uid="uid://bcnnowrx41jnq" path="res://scripts/scene_controller.gd" id="1_tgksc"]
 
 [node name="SceneControllerNode" type="Node"]
 script = ExtResource("1_tgksc")

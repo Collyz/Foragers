@@ -1,8 +1,11 @@
 extends Control
+class_name Game
 
-@onready var game_camera = $SubViewportContainerBoard/SubViewport/BoardCamera
-@onready var game_viewport = $SubViewportContainerBoard/SubViewport
+
+@onready var game_camera = $SubViewportContainerBoard/BoardSubViewport/BoardCamera
+@onready var game_viewport = $SubViewportContainerBoard/BoardSubViewport
 @onready var side_viewport = $SubViewportContainerSides/SubViewport
+@onready var player = preload("res://filler.tscn")
 
 var dragging := false
 var last_mouse_position := Vector2.ZERO
@@ -26,5 +29,10 @@ func _ready():
 	game_camera.position = Vector2(game_viewport.size.x/2, game_viewport.size.y/2)
 	game_camera.position_smoothing_enabled = true;
 	
-func _input(event):
+func _input(_event):
 	pass
+
+func spawn_player(peerID: String) -> void:
+	var temp_player: TempPlayer = player.instantiate()
+	temp_player.name = peerID
+	game_viewport.add_child(temp_player)

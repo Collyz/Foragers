@@ -22,6 +22,7 @@ func _on_back_button_pressed():
 func _on_start_button_pressed():
 	parent.remove_child(self)
 	parent.scene_to_game()
+	parent.host_game()
 
 func _on_lobby_code_button_pressed():
 	DisplayServer.clipboard_set(lobby_code)

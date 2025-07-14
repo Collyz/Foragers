@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://clrvk7x6lxtiw" path="res://scripts/scene_scripts/game_scene.gd" id="1_ycayy"]
 [ext_resource type="Script" uid="uid://beux00cohix03" path="res://scripts/scene_scripts/board_camera.gd" id="2_bw6k5"]
-[ext_resource type="PackedScene" uid="uid://dl1uub6ccu1uk" path="res://filler.tscn" id="2_ycayy"]
+[ext_resource type="Texture2D" uid="uid://bk44nnxqotsdn" path="res://assets/misc/icon.svg" id="2_y3j0m"]
 [ext_resource type="PackedScene" uid="uid://dnimkygvmidpk" path="res://setting_interface_scenes/settings_visual_button.tscn" id="3_y3j0m"]
 
 [node name="Game" type="Control"]
@@ -57,14 +57,21 @@ layout_mode = 1
 offset_right = 1408.0
 offset_bottom = 887.0
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainerBoard"]
+[node name="BoardSubViewport" type="SubViewport" parent="SubViewportContainerBoard"]
 handle_input_locally = false
 render_target_update_mode = 4
 
-[node name="BG" type="CanvasLayer" parent="SubViewportContainerBoard/SubViewport"]
+[node name="BoardCamera" type="Camera2D" parent="SubViewportContainerBoard/BoardSubViewport"]
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("2_bw6k5")
+
+[node name="BG" type="CanvasLayer" parent="SubViewportContainerBoard/BoardSubViewport"]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainerBoard/SubViewport/BG"]
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainerBoard/BoardSubViewport/BG"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -72,33 +79,44 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.276632, 0.452537, 0.923213, 1)
 
-[node name="BoardCamera" type="Camera2D" parent="SubViewportContainerBoard/SubViewport"]
-limit_smoothed = true
-position_smoothing_enabled = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
-script = ExtResource("2_bw6k5")
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
+position = Vector2(995, 522)
+texture = ExtResource("2_y3j0m")
 
-[node name="filler" parent="SubViewportContainerBoard/SubViewport" instance=ExtResource("2_ycayy")]
-position = Vector2(112, 784)
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
+position = Vector2(927, 356)
+texture = ExtResource("2_y3j0m")
 
-[node name="filler2" parent="SubViewportContainerBoard/SubViewport" instance=ExtResource("2_ycayy")]
-position = Vector2(1104, 216)
+[node name="Sprite2D3" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
+position = Vector2(65, 62)
+texture = ExtResource("2_y3j0m")
 
-[node name="filler3" parent="SubViewportContainerBoard/SubViewport" instance=ExtResource("2_ycayy")]
-position = Vector2(672, 720)
+[node name="Sprite2D4" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
+position = Vector2(62, 461)
+texture = ExtResource("2_y3j0m")
 
-[node name="filler4" parent="SubViewportContainerBoard/SubViewport" instance=ExtResource("2_ycayy")]
-position = Vector2(160, 240)
+[node name="Sprite2D5" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
+position = Vector2(912, 98)
+texture = ExtResource("2_y3j0m")
 
-[node name="filler5" parent="SubViewportContainerBoard/SubViewport" instance=ExtResource("2_ycayy")]
-position = Vector2(1064, 648)
+[node name="Sprite2D8" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
+position = Vector2(83, 747)
+texture = ExtResource("2_y3j0m")
 
-[node name="filler6" parent="SubViewportContainerBoard/SubViewport" instance=ExtResource("2_ycayy")]
-position = Vector2(680, 280)
+[node name="Sprite2D7" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
+position = Vector2(1336, 69)
+texture = ExtResource("2_y3j0m")
+
+[node name="Sprite2D6" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
+position = Vector2(751, 731)
+texture = ExtResource("2_y3j0m")
 
 [node name="SettingsVisualButton" parent="." instance=ExtResource("3_y3j0m")]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://dl1uub6ccu1uk")
+spawn_path = NodePath("../SubViewportContainerBoard/BoardSubViewport")
