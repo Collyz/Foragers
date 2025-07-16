@@ -36,3 +36,4 @@ func spawn_player(peerID: String) -> void:
 	var temp_player: TempPlayer = player.instantiate()
 	temp_player.name = peerID
 	game_viewport.add_child(temp_player)
+	
