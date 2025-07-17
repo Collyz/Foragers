@@ -14,6 +14,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ycayy")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.88405, 0.120178, 0.345244, 1)
+
 [node name="SubViewportContainerSides" type="SubViewportContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -23,15 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SideViewport" type="SubViewport" parent="SubViewportContainerSides"]
-handle_input_locally = false
 render_target_update_mode = 4
-
-[node name="TextEdit" type="TextEdit" parent="SubViewportContainerSides/SideViewport"]
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "test 1 test 2 test 3 test 4 test 5 test 6"
-wrap_mode = 1
 
 [node name="Control" type="Control" parent="SubViewportContainerSides/SideViewport"]
 layout_mode = 3
@@ -40,6 +41,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextEdit" type="TextEdit" parent="SubViewportContainerSides/SideViewport/Control"]
+layout_mode = 1
+offset_right = 300.0
+offset_bottom = 600.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "test 1 test 2 test 3 test 4 test 5 test 6"
 
 [node name="BG" type="CanvasLayer" parent="SubViewportContainerSides/SideViewport"]
 layer = -5
@@ -51,6 +61,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.960784, 0.960784, 0.862745, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainerSides/SideViewport"]
+position = Vector2(1104, 128)
+texture = ExtResource("2_y3j0m")
 
 [node name="SubViewportContainerBoard" type="SubViewportContainer" parent="."]
 layout_mode = 1

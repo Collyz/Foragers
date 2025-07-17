@@ -4,8 +4,9 @@ class_name Game
 
 @onready var game_camera = $SubViewportContainerBoard/BoardSubViewport/BoardCamera
 @onready var game_viewport = $SubViewportContainerBoard/BoardSubViewport
-@onready var side_viewport = $SubViewportContainerSides/SubViewport
+@onready var side_viewport = $SubViewportContainerSides/SideViewport
 @onready var player = preload("res://filler.tscn")
+@onready var message_box = $SubViewportContainerSides/SideViewport/TextEdit
 
 var dragging := false
 var last_mouse_position := Vector2.ZERO
@@ -21,7 +22,7 @@ func _ready():
 	board_size = Vector2(2000, 1300)
 	
 	# Make viewport 7/8 of the screen height and 5/6 of the width
-	game_viewport.size = Vector2(screen_size.x/6 * 5, screen_size.y/8 * 7)
+	game_viewport.size = Vector2(screen_size.x/6 * 5, screen_size.y/8 * 6)
 	# Make sideviewport the same size as the screen since it's behind the board anyways
 	side_viewport.size = Vector2(screen_size.x, screen_size.y)
 	
@@ -29,8 +30,14 @@ func _ready():
 	game_camera.position = Vector2(game_viewport.size.x/2, game_viewport.size.y/2)
 	game_camera.position_smoothing_enabled = true;
 	
-func _input(_event):
-	pass
+	# Setting message box width and height
+	message_box.size.x = (screen_size.x/6) - 10
+	message_box.size.y = (screen_size.y/10) * 4
+	message_box.position.x = 0
+	message_box.position.x = (screen_size.x/6 * 5) + 5
+	message_box.position.y += 5
+	message_box.grab_focus()
+	
 
 func spawn_player(peerID: String) -> void:
 	var temp_player: TempPlayer = player.instantiate()
