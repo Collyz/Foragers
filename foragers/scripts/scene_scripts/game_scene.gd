@@ -11,11 +11,13 @@ const SPEC_BORDER_POS = {
 	"CENTER" : BOARD_SIZE/2
 }
 
+
 # Scenes
 @onready var game_camera = $SubViewportContainerBoard/BoardSubViewport/BoardCamera
 @onready var game_viewport = $SubViewportContainerBoard/BoardSubViewport
 @onready var side_viewport = $SubViewportContainerSides/SideViewport
-@onready var message_box = $SubViewportContainerSides/SideViewport/TextEdit
+@onready var msg_box = $SubViewportContainerSides/SideViewport/MessageTextEdit
+@onready var msg_line = $SubViewportContainerSides/SideViewport/MessageLineEdit
 @onready var board_camera = $SubViewportContainerBoard/BoardSubViewport/BoardCamera
 @onready var border_checker = preload("res://border_checker.tscn")
 @onready var player = preload("res://filler.tscn")
@@ -25,10 +27,16 @@ const SPEC_BORDER_POS = {
 @onready var game_viewport_size = Vector2(window_size.x/8 * 6, window_size.y/8 * 6)
 @onready var side_viewport_size = Vector2(window_size.x, window_size.y) # UI Viewpoint
 @onready var msg_box_vals: Dictionary = { #msg box vals
-	"width" : (window_size.x/6) - 10,
+	"width" : (window_size.x/8 * 2) - 10,
 	"height" : (window_size.y/10) * 4,
-	"x_pos" : (window_size.x/6 * 5) + 5,
+	"x_pos" : game_viewport_size.x + 5,
 	"y_pos" : 5
+}
+@onready var msg_line_vals: Dictionary = {
+	"width" : msg_box_vals["width"],
+	"x_pos" : msg_box_vals["x_pos"],
+	"y_pos" : msg_box_vals["height"] + 10, # 31 is height of LineEdit, 5 is just some space between
+	
 }
 
 #func _enter_tree() -> void:
@@ -44,19 +52,57 @@ func _ready():
 	game_viewport.size = game_viewport_size
 	side_viewport.size = side_viewport_size
 	# Setting message box width, height, x, y pos
-	message_box.position = Vector2() # Start at 0,0 then move it 
-	message_box.size.x = msg_box_vals["width"]
-	message_box.size.y = msg_box_vals["height"]
-	message_box.position.x = msg_box_vals["x_pos"]
-	message_box.position.y = msg_box_vals["y_pos"]
+	msg_box.position = Vector2() # Start at 0,0 then move it 
+	msg_box.size.x = msg_box_vals["width"]
+	msg_box.size.y = msg_box_vals["height"]
+	msg_box.position.x = msg_box_vals["x_pos"]
+	msg_box.position.y = msg_box_vals["y_pos"]
+	
+	msg_line.size.x = msg_line_vals["width"]
+	msg_line.position.x = msg_line_vals["x_pos"]
+	msg_line.position.y = msg_line_vals["y_pos"]
+
+func _on_line_edit_text_submitted(new_text):
+	var peer_id = multiplayer.get_unique_id()
+	if new_text.strip_edges() != "":
+		msg_box.text += format_msg(new_text, peer_id)
+		_on_text_edit_text_changed()
+		msg_line.text = ""
+		msg_line.grab_focus()
+		scroll_to_bottom_msg_box()
+
+func _on_text_edit_text_changed():
+	var peer_id = multiplayer.get_unique_id()
+	var new_text = msg_line.text
+	msg_line.text = ""
+	msg_line.grab_focus()
+	rpc("receive_text_change", peer_id, new_text)
+	msg_line.grab_focus()
+	
+@rpc("any_peer", "call_remote", "unreliable_ordered")
+func receive_text_change(peer_id: int, new_text: String):
+	var current_text = msg_box.text
+	if new_text.strip_edges() != "":
+		var formatted_text = format_msg(new_text, peer_id)
+		if current_text == "":
+			msg_box.text = formatted_text
+		else:
+			msg_box.text = current_text + formatted_text
+		scroll_to_bottom_msg_box()
+		
+	msg_line.grab_focus()
 
 func spawn_player(peerID: String) -> void:
 	var temp_player: TempPlayer = player.instantiate()
 	temp_player.name = peerID
 	temp_player.position = SPEC_BORDER_POS["CENTER"]
 	game_viewport.add_child(temp_player)
+
+func format_msg(msg: String, peer_id: int):
+	return "[Peer %d]: %s\n" % [peer_id, msg]
 	
-	
+func scroll_to_bottom_msg_box():
+	msg_box.scroll_vertical = msg_box.get_v_scroll_bar().max_value
 
 #func _input(event):
 	#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -84,6 +130,3 @@ func spawn_player(peerID: String) -> void:
 	#if node.get_global_rect().has_point(pos):
 		#return node
 	#return null
-
-
-	

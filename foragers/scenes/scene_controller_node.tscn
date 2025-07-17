@@ -4,3 +4,7 @@
 
 [node name="SceneControllerNode" type="Node"]
 script = ExtResource("1_tgksc")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://dgw63hsybqj3u")
+spawn_path = NodePath("..")
