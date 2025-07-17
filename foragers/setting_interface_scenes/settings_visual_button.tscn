@@ -12,6 +12,7 @@ script = ExtResource("1_vrex2")
 layout_mode = 1
 offset_right = 160.0
 offset_bottom = 160.0
+scale = Vector2(0.7, 0.7)
 
 [node name="SettingHBox" type="HBoxContainer" parent="SettingVBox"]
 layout_mode = 2

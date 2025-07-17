@@ -6,19 +6,19 @@ var ZOOM_STEP = 0.05
 
 var board_size = Vector2(2000, 1300)
 
-#func _input(event):
-	#if event is InputEventMouseMotion:
-		#if event.button_mask == MOUSE_BUTTON_MASK_MIDDLE:
-			#position -= event.relative / zoom
-			#clamp_camera()
-	#if event is InputEventMouseButton:
-		#if event.is_pressed():
-			#if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				#adjust_zoom(-ZOOM_STEP)
-				#clamp_camera()
-			#if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				#adjust_zoom(ZOOM_STEP)
-				#clamp_camera()
+func _input(event):
+	if event is InputEventMouseMotion:
+		if event.button_mask == MOUSE_BUTTON_MASK_MIDDLE:
+			position -= event.relative / zoom
+			clamp_camera()
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				adjust_zoom(-ZOOM_STEP)
+				clamp_camera()
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				adjust_zoom(ZOOM_STEP)
+				clamp_camera()
 
 func clamp_camera():
 	var viewport_size = get_viewport_rect().size

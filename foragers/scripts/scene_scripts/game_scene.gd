@@ -53,7 +53,7 @@ func _ready():
 	board_size = Vector2(2000, 1300)
 	
 	# Make viewport 7/8 of the screen height and 5/6 of the width
-	game_viewport.size = Vector2(screen_size.x/6 * 5, screen_size.y/8 * 6)
+	game_viewport.size = Vector2(screen_size.x/6 * 3, screen_size.y/8 * 6)
 	# Make sideviewport the same size as the screen since it's behind the board anyways
 	side_viewport.size = Vector2(screen_size.x, screen_size.y)
 	
