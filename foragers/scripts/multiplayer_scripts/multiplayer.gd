@@ -10,6 +10,9 @@ func _ready():
 	peer = ENetMultiplayerPeer.new()
 	randomize()
 	
+	## Give parent a unique ID for handling synchronization
+	#get_parent().name = str(multiplayer.get_unique_id())
+	
 func create_server():
 	if peer != null:
 		peer.create_server(port_to_use)

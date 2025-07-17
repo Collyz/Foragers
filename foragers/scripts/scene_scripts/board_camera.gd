@@ -11,9 +11,9 @@ var board_size: Vector2
 func _ready():
 	# Board size from game script
 	board_size = parent.BOARD_SIZE
-	# Camerar to center of the baord
+	# Camera to center of the baord
 	position = board_size * 0.5 
-	print(self.position)
+	zoom = Vector2(0.7, 0.7)
 	clamp_camera()
 
 func _input(event):
