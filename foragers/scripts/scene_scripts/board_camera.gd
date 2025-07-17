@@ -4,7 +4,17 @@ var MIN_ZOOM = .5
 var MAX_ZOOM = 2
 var ZOOM_STEP = 0.05
 
-var board_size = Vector2(2000, 1300)
+var board_size: Vector2
+
+@onready var parent = $"../../.."
+
+func _ready():
+	# Board size from game script
+	board_size = parent.BOARD_SIZE
+	# Camerar to center of the baord
+	position = board_size * 0.5 
+	print(self.position)
+	clamp_camera()
 
 func _input(event):
 	if event is InputEventMouseMotion:

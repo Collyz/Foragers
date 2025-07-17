@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://clrvk7x6lxtiw" path="res://scripts/scene_scripts/game_scene.gd" id="1_ycayy"]
 [ext_resource type="Script" uid="uid://beux00cohix03" path="res://scripts/scene_scripts/board_camera.gd" id="2_bw6k5"]
-[ext_resource type="Texture2D" uid="uid://bk44nnxqotsdn" path="res://assets/misc/icon.svg" id="2_y3j0m"]
 [ext_resource type="PackedScene" uid="uid://dnimkygvmidpk" path="res://setting_interface_scenes/settings_visual_button.tscn" id="3_y3j0m"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ycayy"]
+properties/0/path = NodePath("SubViewportContainerSides/SideViewport/TextEdit:text")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -73,38 +77,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.276632, 0.452537, 0.923213, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
-position = Vector2(995, 522)
-texture = ExtResource("2_y3j0m")
-
-[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
-position = Vector2(927, 356)
-texture = ExtResource("2_y3j0m")
-
-[node name="Sprite2D3" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
-position = Vector2(65, 62)
-texture = ExtResource("2_y3j0m")
-
-[node name="Sprite2D4" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
-position = Vector2(62, 461)
-texture = ExtResource("2_y3j0m")
-
-[node name="Sprite2D5" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
-position = Vector2(912, 98)
-texture = ExtResource("2_y3j0m")
-
-[node name="Sprite2D8" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
-position = Vector2(83, 747)
-texture = ExtResource("2_y3j0m")
-
-[node name="Sprite2D7" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
-position = Vector2(1336, 69)
-texture = ExtResource("2_y3j0m")
-
-[node name="Sprite2D6" type="Sprite2D" parent="SubViewportContainerBoard/BoardSubViewport"]
-position = Vector2(751, 731)
-texture = ExtResource("2_y3j0m")
-
 [node name="SettingsVisualButton" parent="." instance=ExtResource("3_y3j0m")]
 layout_mode = 1
 anchors_preset = 9
@@ -114,3 +86,6 @@ grow_vertical = 2
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://4vag6fpyg0a5")
 spawn_path = NodePath("../SubViewportContainerBoard/BoardSubViewport")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ycayy")
