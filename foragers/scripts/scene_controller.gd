@@ -23,7 +23,6 @@ func scene_to_joining():
 	if get_node_or_null("res://scenes/join_lobby.tscn") == null:
 		add_child(joining_scene)
 		
-		
 func scene_to_hosting():
 	if get_node_or_null("res://scenes/hosting_lobby.tscn") == null:
 		add_child(hosting_scene)

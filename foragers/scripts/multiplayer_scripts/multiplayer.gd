@@ -60,3 +60,5 @@ func add_player(peerID):
 func set_game_scene(scene: Game) -> void:
 	game_scene = scene
 	
+func validate_code(try_code: String) -> bool:
+	return try_code == expected_lobby_code

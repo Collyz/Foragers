@@ -11,7 +11,6 @@ const SPEC_BORDER_POS = {
 	"CENTER" : BOARD_SIZE/2
 }
 
-
 # Scenes
 @onready var game_camera = $SubViewportContainerBoard/BoardSubViewport/BoardCamera
 @onready var game_viewport = $SubViewportContainerBoard/BoardSubViewport
