@@ -88,4 +88,3 @@ _spawnable_scenes = PackedStringArray("uid://4vag6fpyg0a5")
 spawn_path = NodePath("../SubViewportContainerBoard/BoardSubViewport")
 
 [connection signal="text_submitted" from="SubViewportContainerSides/SideViewport/MessageLineEdit" to="." method="_on_line_edit_text_submitted"]
-[connection signal="text_changed" from="SubViewportContainerSides/SideViewport/MessageTextEdit" to="." method="_on_text_edit_text_changed"]

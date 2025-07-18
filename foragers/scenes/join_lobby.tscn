@@ -35,30 +35,48 @@ grow_vertical = 2
 
 [node name="JoinLobbyLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 10
 theme_override_font_sizes/font_size = 50
 text = "Join a Lobby"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="UsernameHBox" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 theme_override_constants/separation = 20
 
-[node name="LobbyPromptLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="NamePromptLabel" type="Label" parent="VBoxContainer/UsernameHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Enter a username:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UsernameEdit" type="LineEdit" parent="VBoxContainer/UsernameHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+
+[node name="LobbyCodeHBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 20
+
+[node name="LobbyPromptLabel" type="Label" parent="VBoxContainer/LobbyCodeHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Enter a lobby code:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+[node name="LobbyCodeEdit" type="LineEdit" parent="VBoxContainer/LobbyCodeHBox"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-placeholder_text = "ex: EP49"
+placeholder_text = "ex: EP492X"
 
 [node name="ErrorLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -84,5 +102,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Join Game"
 
+[connection signal="text_changed" from="VBoxContainer/UsernameHBox/UsernameEdit" to="." method="_on_username_edit_text_changed"]
+[connection signal="text_submitted" from="VBoxContainer/UsernameHBox/UsernameEdit" to="." method="_on_username_edit_text_submitted"]
+[connection signal="text_changed" from="VBoxContainer/LobbyCodeHBox/LobbyCodeEdit" to="." method="_on_lobby_code_edit_text_changed"]
+[connection signal="text_submitted" from="VBoxContainer/LobbyCodeHBox/LobbyCodeEdit" to="." method="_on_lobby_code_edit_text_submitted"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/JoinGameButton" to="." method="_on_join_game_button_pressed"]

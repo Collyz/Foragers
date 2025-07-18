@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://ohp6gwy2jd1f"]
+
+[ext_resource type="Texture2D" uid="uid://bebaopdcasuqv" path="res://assets/card_faces/card_back.png" id="1_teinw"]
+[ext_resource type="Texture2D" uid="uid://bqhxdnswqls84" path="res://border_corner.png" id="2_eetlv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_teinw"]
+size = Vector2(64, 128)
+
+[node name="Node2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_teinw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_teinw")
+
+[node name="CardNumberSprite" type="Sprite2D" parent="."]
+position = Vector2(32, 64)
+scale = Vector2(0.600001, 0.600001)
+texture = ExtResource("2_eetlv")
+
+[node name="CardNumberLabel" type="Label" parent="CardNumberSprite"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -43.5
+offset_right = -31.5
+offset_bottom = -20.5
+grow_horizontal = 2
+grow_vertical = 2

@@ -21,9 +21,17 @@ func create_server():
 		multiplayer.peer_connected.connect(
 			func(peerID):
 				print("Peer " + str(peerID) + " has joined the game!")
-				add_player(peerID)
+				#add_player(peerID)
 		)
-	add_player(multiplayer.get_unique_id())
+	#add_player(multiplayer.get_unique_id())
+	
+func close_server():
+	if peer != null:
+		print("Closing server...")
+		peer.close()  # Cleanly shutdown the ENet server
+		multiplayer.multiplayer_peer = null  # Detach from multiplayer
+		peer = null  # Optional: free the peer instance
+
 	
 func create_client():
 	if peer != null:
@@ -49,6 +57,7 @@ func generate_lobby_code() -> String:
 		result += char(value)
 	
 	expected_lobby_code = result
+	print("Expected code: %s" % expected_lobby_code)
 	return result
 
 func add_player(peerID):
@@ -61,4 +70,11 @@ func set_game_scene(scene: Game) -> void:
 	game_scene = scene
 	
 func validate_code(try_code: String) -> bool:
+	print("Input code: %s" % try_code)
+	print("Expected code: %s" % expected_lobby_code)
 	return try_code == expected_lobby_code
+
+@rpc("any_peer", "call_remote", "unreliable_ordered")
+func rpc_validate_code(lobby_code: String) -> bool:
+	print("Host validating code: %s" % lobby_code)
+	return validate_code(lobby_code)

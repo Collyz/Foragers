@@ -15,16 +15,19 @@ const SPEC_BORDER_POS = {
 @onready var game_camera = $SubViewportContainerBoard/BoardSubViewport/BoardCamera
 @onready var game_viewport = $SubViewportContainerBoard/BoardSubViewport
 @onready var side_viewport = $SubViewportContainerSides/SideViewport
+@onready var board_camera = $SubViewportContainerBoard/BoardSubViewport/BoardCamera
+
 @onready var msg_box = $SubViewportContainerSides/SideViewport/MessageTextEdit
 @onready var msg_line = $SubViewportContainerSides/SideViewport/MessageLineEdit
-@onready var board_camera = $SubViewportContainerBoard/BoardSubViewport/BoardCamera
+
 @onready var border_checker = preload("res://border_checker.tscn")
 @onready var player = preload("res://filler.tscn")
-# Window size of the actual game
-@onready var window_size = get_viewport().get_visible_rect().size
+
+@onready var window_size = get_viewport().get_visible_rect().size # Size of the app window
 # Make game viewport 6/8 of the width and 6/8 of the screen height 
 @onready var game_viewport_size = Vector2(window_size.x/8 * 6, window_size.y/8 * 6)
 @onready var side_viewport_size = Vector2(window_size.x, window_size.y) # UI Viewpoint
+
 @onready var msg_box_vals: Dictionary = { #msg box vals
 	"width" : (window_size.x/8 * 2) - 10,
 	"height" : (window_size.y/10) * 4,
@@ -74,9 +77,8 @@ func _on_text_edit_text_changed():
 	var peer_id = multiplayer.get_unique_id()
 	var new_text = msg_line.text
 	msg_line.text = ""
-	msg_line.grab_focus()
 	rpc("receive_text_change", peer_id, new_text)
-	msg_line.grab_focus()
+
 	
 @rpc("any_peer", "call_remote", "unreliable_ordered")
 func receive_text_change(peer_id: int, new_text: String):
